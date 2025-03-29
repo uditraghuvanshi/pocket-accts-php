@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poket Accts</title>
+    <!-- <link rel="stylesheet" href="output.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Prevent horizontal scroll */
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Box-sizing to prevent overflow issues */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* card fliping css */
+.flip-card {
+        perspective: 1000px;
+        width: 350px;
+        height: 400px;
+    }
+
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-radius: 1rem;
+        padding: 1.5rem;
+    }
+
+    .flip-card-back {
+        background-color: #1f2937;
+        color: white;
+        transform: rotateY(180deg);
+        padding: 1.5rem;
+    }
+
+    /* Ensuring proper spacing between heading and content */
+    .flip-card-back h2 {
+        margin-bottom: 0.5rem; /* Reduced gap */
+    }
+
+    .flip-card-back .scrollable-content {
+        overflow-y: auto;
+        max-height: 250px; /* Ensures text doesn’t overflow */
+        width: 100%;
+        padding-right: 5px;
+    }
+
+    .flip-card-back p, 
+    .flip-card-back ul {
+        margin-top: 0.25rem; /* Reduced spacing for consistency */
+    }
+    </style>
+</head>
+
+<body class="overflow-x-hidden bg-gray-100 pt-20">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="text-2xl font-bold">
+                    <a href="./index.html#">Pocket Accts</a>
+                </div>
+
+                <!-- Navbar Links (Hidden on Mobile) -->
+                <div class="hidden md:flex space-x-6 text-xl">
+                    <a href="#About-Us" class="text-gray-700 hover:text-teal-500">About Us</a>
+                    <a href="#Our-Services" class="text-gray-700 hover:text-teal-500">Our Services</a>
+                </div>
+
+                <!-- Get in Touch Button -->
+                <div class="hidden md:flex">
+                    <a href="./src/contact-us.php"><button
+                            class="bg-teal-500 hover:bg-teal-600 p-2 rounded-xl text-white text-xl">Consult
+                            Now</button></a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" viewBox="0 0 24 24">
+                            <path d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white py-2 px-4">
+            <a href="#About-Us" class="block py-2 text-gray-700 hover:text-teal-500">About Us</a>
+            <a href="#Our-Services" class="block py-2 text-gray-700 hover:text-teal-500">Our Services</a>
+            <a href="./src/contact-us.html"
+                class="block mt-2 text-center bg-teal-500 hover:bg-teal-600 text-white py-2 rounded-xl">Consult Now</a>
+        </div>
+    </nav>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+
+
+    <!-- Hero Section -->
+    <div class="hero-block grid grid-cols-1 md:grid-cols-2 w-full px-5 h-lvh">
+        <div class="block-left mt-10">
+            <div class="text-5xl md:text-8xl font-bold mt-5">
+                <h1>Achieve</h1>
+                <h1>Financial Clarity</h1>
+                <h1>and Control</h1>
+            </div>
+            <div class="text-xl md:text-2xl mt-5">
+                <h1>Streamline your financial management</h1>
+                <h1>with professional bookkeeping, tax preparation,</h1>
+                <h1>and Bank Reconciliation</h1>
+            </div>
+            <div class="hero-buttons mt-10">
+                <a href="./src/contact-us.html"><button
+                        class="bg-teal-500 text-2xl text-white p-4 rounded-xl hover:bg-teal-600 mr-5">Schedule Your Free
+                        Consultation Today</button></a>
+            </div>
+        </div>
+        <div class="block-right mt-5">
+            <img class="rounded-2xl sm:rounded-bl-full shadow-2xl w-full max-w-full"
+                src="./images/pexels-fauxels-3184292.jpg" alt="">
+        </div>
+    </div>
+
+    <!-- About Us -->
+    <div class="about-us bg-gray-100 py-24 px-5 w-full" id="About-Us">
+        <div class="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <!-- Left Section -->
+            <div class="about-left text-center md:text-left">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800">About Us</h1>
+                <h2 class="text-sm md:text-2xl font-bold text-gray-600 mt-4 leading-relaxed">Introduction</h2>
+                <p class="text-sm md:text-lg text-gray-600 mt-4 leading-relaxed">
+                    Established in 2025, Pocket Accts was founded with the vision of transforming bookkeeping for small
+                    and medium-sized
+                    enterprises (SMEs). Our team of experienced professionals utilizes cutting-edge technology to
+                    deliver accurate and
+                    efficient financial solutions, allowing business owners to focus on their core operations.
+                </p>
+                <h2 class="text-sm md:text-2xl font-bold text-gray-600 mt-4 leading-relaxed">Mission Statement</h2>
+                <p class="text-sm md:text-lg text-gray-600 mt-4 leading-relaxed">
+                    At Pocket Accts, our mission is to provide SMEs with innovative and reliable bookkeeping services,
+                    ensuring financial
+                    clarity and fostering business growth.
+                </p>
+                <p class="text-sm md:text-lg text-gray-600 mt-4 leading-relaxed">
+                    We believe in building strong relationships with our clients. We take the time to understand your business goals and
+                    challenges, allowing us to offer proactive advice and support. Our commitment to integrity, transparency, and excellence
+                    drives us to go beyond mere number-crunching; we aim to be a trusted partner in your business journey.​
+
+                </p>
+                <p class="text-sm md:text-lg text-gray-600 mt-4 leading-relaxed">
+                    Whether you're a startup looking to establish solid financial foundations or an established business
+                    seeking to
+                    streamline your bookkeeping processes, Pocket Accts is here to assist you every step of the way.
+                </p>
+                <h2 class="text-sm md:text-2xl font-bold text-gray-600 mt-4 leading-relaxed">Why Choose Poket Accts?
+                </h2>
+                <p class="text-sm md:text-lg text-gray-600 mt-4 leading-relaxed">
+                <ul>
+                    <li class="m-5 text-sm md:text-lg text-gray-600">✔ Personalized Solutions - We understand that every
+                        business is unique. Our services are tailored to fit your specific
+                        needs and goals.​</li>
+                    <li class="m-5 text-sm md:text-lg text-gray-600">✔ Experienced Professionals - Our team comprises
+                        skilled bookkeepers with extensive experience across various industries.​</li>
+                    <li class="m-5 text-sm md:text-lg text-gray-600">✔ Advanced Technology - We leverage the latest
+                        accounting software to provide efficient and accurate services.​</li>
+                    <li class="m-5 text-sm md:text-lg text-gray-600">✔ Confidentiality & Security: Your financial data
+                        is handled with the utmost confidentiality and protected using robust
+                        security measures.</li>
+                </ul>
+                </p>
+            </div>
+            <!-- Right Section (Image or Services) -->
+            <div class="about-right flex justify-center">
+                <img class="rounded-lg w-full max-w-3xl h-auto object-contain transition-all duration-500 ease-in-out transform"
+                    src="./images/About us page.gif" alt="Our Services">
+            </div>
+        </div>
+    </div>
+    <!-- Our Services -->
+    <div class="our-services bg-gray-100 py-32 px-5 w-full" id="Our-Services">
+        <div class="container mx-auto max-w-7xl text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10">
+                Discover the Exceptional Services of Pocket Accts
+            </h1>
+            <div class="flex gap-6 flex-wrap justify-center">
+                <!-- Card 1: Streamlined Bookkeeping -->
+                    <div class="service-item flip-card">
+                        <div class="flip-card-inner">
+                            <!-- Front Side -->
+                            <div
+                                class="flip-card-front bg-white p-6 shadow-lg rounded-xl flex flex-col justify-center items-center text-center">
+                                <img class="h-14 w-14 mb-4" src="https://img.icons8.com/?size=100&id=BPuGKua2234M&format=png&color=40C057"
+                                    alt="Calculator Icon">
+                                <h2 class="text-xl font-semibold text-gray-700">Streamlined Bookkeeping</h2>
+                                <p class="text-gray-600 mt-2">Efficiently manage your daily financial transactions with our streamlined
+                                    bookkeeping services. We ensure accurate
+                                    recording and organization, allowing you to focus on growing your business.</p>
+                            </div>
+                    
+                            <!-- Back Side -->
+                            <div class="flip-card-back bg-gray-800 text-white shadow-lg rounded-xl flex flex-col items-center">
+                                <h2 class="text-xl font-semibold text-center mt-4">Streamlined Bookkeeping</h2>
+                                <p class="mt-2 text-gray-200 font-semibold text-center">"Accurate financial records for better
+                                    decision-making"</p>
+                    
+                                <div class="scrollable-content overflow-y-auto max-h-40 p-2">
+                                    <p class="text-gray-300 text-sm text-center">Efficient bookkeeping is the foundation of a well-managed
+                                        business. Our team ensures that your financial data is
+                                        meticulously recorded, categorized, and reconciled, enabling you to maintain clarity and control
+                                        over your finances.</p>
+                    
+                                    <p class="font-semibold mt-2 text-sm underline">Our Bookkeeping Services Include:</p>
+                                    <ul class="list-disc pl-5 text-gray-300 text-sm">
+                                        <li>✔ Transaction Recording – Systematic tracking of income and expenses.</li>
+                                        <li>✔ Ledger Maintenance – Accurate and up-to-date general ledger management.</li>
+                                        <li>✔ Bank & Credit Card Reconciliation – Ensuring consistency between financial statements
+                                            and banking records.</li>
+                                        <li>✔ Financial Summary Reports – Regular reports for clear financial insights.</li>
+                                    </ul>
+                                </div>
+                    
+                                <!-- Button -->
+                                <a href="./src/contact-us.html"><button
+                                    class="mt-4 mb-4 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600 transition">
+                                    Schedule Now
+                                </button></a>
+                            </div>
+                        </div>
+                    </div>
+                <!-- Card 2: Financial Reporting & Analysis -->
+                    <div class="service-item flip-card">
+                        <div class="flip-card-inner">
+                            <!-- Front Side -->
+                            <div
+                                class="flip-card-front bg-white p-6 shadow-lg rounded-xl flex flex-col justify-center items-center text-center">
+                                <img class="h-14 w-14 mb-4"
+                                    src="https://img.icons8.com/?size=100&id=3Qo8B8UlXVMU&format=png&color=40C057"
+                                    alt="Financial Report Icon">
+                                <h2 class="text-xl font-semibold text-gray-700">Financial Reporting & Analysis</h2>
+                                <p class="text-gray-600 mt-2">Gain valuable insights into your business performance with our comprehensive financial reporting and analysis. Our
+                                detailed reports help you make informed strategic decisions.</p>
+                            </div>
+
+                            <!-- Back Side -->
+                            <div
+                                class="flip-card-back bg-gray-800 text-white shadow-lg rounded-xl flex flex-col items-center">
+                                <h2 class="text-xl font-semibold text-center mt-4">Financial Reporting & Analysis</h2>
+                                <p class="mt-2 text-gray-200 font-semibold text-center">"Data-driven insights for
+                                    strategic business
+                                    decisions"</p>
+                                <div class="scrollable-content">
+                                    <p class="text-gray-300 text-sm text-center">Accurate financial reporting provides critical insights into your business’s performance. Our tailored reports help you
+                                    understand key financial indicators and make informed decisions that drive profitability.</p>
+                                    <p class="font-semibold mt-2 text-sm underline">We Provide:</p>
+                                    <ul class="list-disc pl-5 text-gray-300 text-sm">
+                                        <li>📊 Profit & Loss Statements – Comprehensive reports detailing revenue and
+                                            expenditure.
+                                        </li>
+                                        <li>📈 Balance Sheets – A clear snapshot of your assets, liabilities, and
+                                            equity.</li>
+                                        <li>💰 Cash Flow Statements – Insightful tracking of cash inflows and outflows.
+                                        </li>
+                                        <li>📌 Custom Financial Analysis – In-depth financial trends, forecasts, and
+                                            KPIs.</li>
+                                    </ul>
+                                </div>
+                                <!-- Button -->
+                                <a href="./src/contact-us.html"><button
+                                        class="mt-4 mb-4 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600 transition">
+                                        Schedule Now
+                                </button></a>
+                            </div>
+                        </div>
+                    </div>
+                <!-- Card 3: Tax Preparation & Compliance -->
+                    <div class="service-item flip-card">
+                        <div class="flip-card-inner">
+                            <!-- Front Side -->
+                            <div
+                                class="flip-card-front bg-white p-6 shadow-lg rounded-xl flex flex-col justify-center items-center text-center">
+                                <img class="h-14 w-14 mb-4"
+                                    src="https://img.icons8.com/?size=100&id=35758&format=png&color=40C057"
+                                    alt="Tax Compliance Icon">
+                                <h2 class="text-xl font-semibold text-gray-700">Tax Preparation & Compliance</h2>
+                                <p class="text-gray-600 mt-2">Navigate the complexities of tax regulations confidently. Our expert team ensures timely and accurate tax preparation,
+                                keeping your business compliant and optimized for tax efficiency.</p>
+                            </div>
+
+                            <!-- Back Side -->
+                            <div
+                                class="flip-card-back bg-gray-800 text-white shadow-lg rounded-xl flex flex-col items-center">
+                                <h2 class="text-xl font-semibold text-center mt-4">Tax Preparation & Compliance</h2>
+                                <div class="scrollable-content">
+                                    <p class="mt-2 text-gray-200 font-semibold text-center">"Effortless tax compliance, maximized savings"</p>
+                                    <p class="text-gray-300 text-sm text-center">Navigating complex tax regulations can be daunting. We provide meticulous tax planning and compliance solutions to
+                                    ensure your business meets its obligations while optimizing tax efficiency.
+                                    </p>
+                                    <p class="font-semibold mt-2 text-sm underline">Our Tax Services Include:</p>
+                                    <ul class="list-disc pl-5 text-gray-300 text-sm">
+                                        <li>📝 Corporate & Personal Tax Filings – Accurate and timely tax return
+                                            preparation.</li>
+                                        <li>💼 VAT Compliance & Submissions – Seamless VAT calculations and filings.
+                                        </li>
+                                        <li>📆 Tax Planning & Advisory – Strategies to minimize liabilities and maximize
+                                            deductions.
+                                        </li>
+                                        <li>⚖️ Regulatory Compliance Assistance – Ensuring full compliance with HMRC
+                                            requirements.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Button -->
+                                <a href="./src/contact-us.html"><button
+                                        class="mt-4 mb-4 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600 transition">
+                                        Schedule Now
+                                </button></a>
+                            </div>
+                        </div>
+                    </div>
+                <!-- Card 4: Accounts Payable & Receivable -->
+                    <div class="service-item flip-card">
+                        <div class="flip-card-inner">
+                            <!-- Front Side -->
+                            <div
+                                class="flip-card-front bg-white p-6 shadow-lg rounded-xl flex flex-col justify-center items-center text-center">
+                                <img class="h-14 w-14 mb-4"
+                                    src="https://img.icons8.com/?size=100&id=22447&format=png&color=40C057"
+                                    alt="Accounts Management Icon">
+                                <h2 class="text-xl font-semibold text-gray-700">Accounts Payable & Receivable</h2>
+                                <p class="text-gray-600 mt-2">Maintain healthy cash flow with our accounts payable and receivable services. We manage invoicing, collections, and
+                                payments, helping you keep track of what’s owed and what’s due.</p>
+                            </div>
+
+                            <!-- Back Side -->
+                            <div
+                                class="flip-card-back bg-gray-800 text-white shadow-lg rounded-xl flex flex-col items-center">
+                                <h2 class="text-xl font-semibold text-center mt-4">Accounts Payable & Receivable</h2>
+                                <div class="scrollable-content">
+                                    <p class="mt-2 text-gray-200 font-semibold text-center">"Optimized cash flow and streamlined payment processing"</p>
+                                    <p class="text-gray-300 text-sm text-center">Managing payments and receivables efficiently is crucial for maintaining liquidity. We offer end-to-end solutions to
+                                    ensure timely payments, reduce outstanding balances, and optimize working capital.</p>
+                                    <p class="font-semibold mt-2 text-sm underline">Our AR & AP Services Include:</p>
+                                    <ul class="list-disc pl-5 text-gray-300 text-sm">
+                                        <li>✔ Invoice Management – Timely issuance and tracking of invoices.</li>
+                                        <li>✔ Payment Processing – Coordinating vendor and supplier payments.</li>
+                                        <li>✔ Receivables Monitoring – Ensuring timely collection of outstanding
+                                            payments.</li>
+                                        <li>✔ Outstanding Debt Follow-Ups – Professional communication to recover unpaid
+                                            dues.</li>
+                                    </ul>
+                                </div>
+                                <!-- Button -->
+                                <a href="./src/contact-us.html"><button
+                                        class="mt-4 mb-4 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600 transition">
+                                        Schedule Now
+                                </button></a>
+                            </div>
+                        </div>
+                    </div>
+                <!-- Card 5: bank Reconciliation -->
+                    <!--  -->
+                    <div class="service-item flip-card">
+                        <div class="flip-card-inner">
+                            <!-- Front Side -->
+                            <div
+                                class="flip-card-front bg-white p-6 shadow-lg rounded-xl flex flex-col justify-center items-center text-center">
+                                <img class="h-14 w-14 mb-4" src="https://img.icons8.com/?size=100&id=45642&format=png&color=40C057"
+                                    alt="Accounts Management Icon">
+                                <h2 class="text-xl font-semibold text-gray-700">Bank Reconciliation</h2>
+                                <p class="text-gray-600 mt-2">Ensure the accuracy of your financial records with our bank reconciliation services. We compare your internal records
+                                with bank statements to identify and rectify discrepancies promptly.
+                                </p>
+                            </div>
+                    
+                            <!-- Back Side -->
+                            <div class="flip-card-back bg-gray-800 text-white shadow-lg rounded-xl flex flex-col items-center">
+                                <h2 class="text-xl font-semibold text-center mt-4">Bank Reconciliation</h2>
+                                <div class="scrollable-content">
+                                    <p class="mt-2 text-gray-200 font-semibold text-center">"Ensuring financial accuracy, detecting discrepancies"</p>
+                                    <p class="text-gray-300 text-sm text-center">Bank reconciliation is a critical process to verify that your accounting records align with bank statements, preventing
+                                    errors and fraud. Our reconciliation services provide accuracy and financial clarity.</p>
+                                    <p class="font-semibold mt-2 text-sm underline">Our Bank Reconciliation Services Include:</p>
+                                    <ul class="list-disc pl-5 text-gray-300 text-sm">
+                                        <li>🔍 Transaction Matching – Verifying financial records against bank statements.</li>
+                                        <li>⚠️ Error & Discrepancy Detection – Identifying and rectifying inconsistencies.</li>
+                                        <li>💼 Duplicate & Missing Entry Resolution – Ensuring completeness and accuracy.</li>
+                                        <li>📈 Cash Flow Oversight – Monitoring liquidity and optimizing financial planning.</li>
+                                    </ul>
+                                </div>
+                                <!-- Button -->
+                                <a href="./src/contact-us.html"><button
+                                        class="mt-4 mb-4 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600 transition">
+                                        Schedule Now
+                                </button></a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <!-- <a href="./src/contact-us.html">
+                    <div
+                        class="service-item bg-white p-6 shadow-lg rounded-xl flex flex-col items-center hover:bg-gray-200">
+                        <img class="h-12 w-12 mx-auto mb-4" src="./images/icons8-money-bag-rupee-50.png"
+                            alt="Consulting Icon">
+                        <h2 class="text-xl font-semibold text-gray-700">Dedicated Financial Consulting</h2>
+                        <p class="text-gray-600 mt-2">Professional insights to grow your wealth.</p>
+                    </div>
+                </a> -->
+            <!-- <a href="./src/contact-us.html">
+                    <div
+                        class="service-item bg-white p-6 shadow-lg rounded-xl flex flex-col  col-span-full hover:bg-gray-200">
+                        <img class="h-12 w-12 mx-auto mb-4"
+                            src="https://img.icons8.com/?size=100&id=10034&format=png&color=40C057" alt="Payroll Icon">
+                        <h2 class="text-xl font-semibold text-gray-700">Efficient Payroll Management</h2>
+                        <p class="text-gray-600 mt-2">Seamless payroll processing for your team.</p>
+                    </div>
+                </a> -->
+        </div>
+    </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10 px-5">
+        <div class="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+
+            <!-- Brand Section -->
+            <div class="brand-footer">
+                <h1 class="text-xl font-bold mb-3">Pocket Accts</h1>
+                <p class="text-gray-400 text-sm">
+                    Streamline your financial management with professional bookkeeping, tax preparation, and Bank
+                    Reconciliation
+                </p>
+            </div>
+
+            <!-- Explore Section -->
+            <div class="explore-footer">
+                <h1 class="text-lg font-semibold mb-3">Explore</h1>
+                <ul class="space-y-2">
+                    <li><a href="./index.html#" class="text-gray-400 hover:text-teal-400 transition">Home</a></li>
+                    <li><a href="#About-Us" class="text-gray-400 hover:text-teal-400 transition">About Us</a></li>
+                    <li><a href="#Our-Services" class="text-gray-400 hover:text-teal-400 transition">Our Services</a>
+                    </li>
+                    <li><a href="./src/contact-us.html" class="text-gray-400 hover:text-teal-400 transition">Contact
+                            Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Services Section -->
+            <div class="services-footer">
+                <h1 class="text-lg font-semibold mb-3">Our Services</h1>
+                <ul class="space-y-2">
+                    <li class="text-gray-400">Streamlined Bookkeeping</li>
+                    <li class="text-gray-400">Financial Reporting & Analysis</li>
+                    <li class="text-gray-400">Tax Preparation & Compliance</li>
+                    <li class="text-gray-400">Accounts Payable & Receivable</li>
+                    <li class="text-gray-400">Bank Reconciliation</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="border-t border-gray-700 mt-8 pt-5 text-center text-sm text-gray-500">
+            © 2025 Pocket Accts. All Rights Reserved.
+        </div>
+    </footer>
+</body>
+
+</html>

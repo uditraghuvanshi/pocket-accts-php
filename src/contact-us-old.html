@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Pocket Accts-Contact Us</title>
+    <link rel="stylesheet" href="output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="text-2xl font-bold">
+                    <a href="../index.html">Pocket Accts</a>
+                </div>
+                <!-- Get in Touch Button -->
+                <div class="md:flex">
+                    <a href="../index.html"><button class="bg-teal-500 hover:bg-teal-600 p-2 rounded-xl text-white text-xl">&#x25c2;Back</button></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Contact Us -->
+    <div class="container min-w-screen min-h-screen grid">
+        <div class="contact-us bg-gray-100 py-12 px-5 w-full grid" id="Contact-Us">
+            <div class="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <!-- Left Section -->
+                <div class="contact-left text-center md:text-left">
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Contact Us</h1>
+                    <form action="#" class="mt-10 mx-auto w-full max-w-md grid gap-5">
+                        <input type="text" placeholder="Name" required class="border-2 border-gray-300 p-3 rounded-md w-full">
+                        <input type="tel" placeholder="Phone No. (+91)" required class="border-2 border-gray-300 p-3 rounded-md w-full">
+                        <input type="email" placeholder="Email" required class="border-2 border-gray-300 p-3 rounded-md w-full">
+                        <input type="text" placeholder="Business Name" required class="border-2 border-gray-300 p-3 rounded-md w-full">
+                        <select name="services" id="services-select" required class="border-2 border-gray-300 p-3 rounded-md w-full hover:bg-gray-200 cursor-pointer">
+                            <option value="">Select Service</option>
+                            <option value="Default">Streamlined Bookkeeping</option>
+                            <option value="Default">Financial Reporting & Analysis</option>
+                            <option value="Default">Tax Preparation & Compliance</option>
+                            <option value="Default">Accounts Payable & Receivable</option>
+                            <option value="">Bank Reconciliation</option>
+                        </select>
+                        <textarea name="desciption" id="Desciption" placeholder="Write a Decription..." class="border-2 h-32 p-2"></textarea>
+                        <button type="submit" class="bg-teal-500 text-xl text-white p-3 rounded-xl hover:bg-teal-600 w-full">Submit</button>
+                    </form>
+                </div>
+                <!-- Right Section (Image) -->
+                <div class="contact-right flex justify-center">
+                    <img class="rounded-lg shadow-lg w-full md:w-3/4 h-auto max-h-[500px] object-cover"
+                        src="../images/contact Us.jpg" alt="Contact Us">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10 px-5">
+        <div class="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+    
+            <!-- Brand Section -->
+            <div class="brand-footer">
+                <h1 class="text-xl font-bold mb-3">Pocket Accts.</h1>
+                <p class="text-gray-400 text-sm">
+                    Dedicated to providing professional virtual accounting services, ensuring financial clarity for every
+                    client.
+                </p>
+            </div>
+    
+            <!-- Explore Section -->
+            <div class="explore-footer">
+                <h1 class="text-lg font-semibold mb-3">Explore</h1>
+                <ul class="space-y-2">
+                    <li><a href="../index.html#" class="text-gray-400 hover:text-teal-400 transition">Home</a></li>
+                    <li><a href="../index.html#About-Us" class="text-gray-400 hover:text-teal-400 transition">About Us</a></li>
+                    <li><a href="../index.html#Our-Services" class="text-gray-400 hover:text-teal-400 transition">Our Services</a></li>
+                    <li><a href="./contact-us.html" class="text-gray-400 hover:text-teal-400 transition">Contact Us</a></li>
+                </ul>
+            </div>
+    
+            <!-- Services Section -->
+            <div class="services-footer">
+                <h1 class="text-lg font-semibold mb-3">Our Services</h1>
+                <ul class="space-y-2">
+                    <li class="text-gray-400">Bookkeeping</li>
+                    <li class="text-gray-400">Tax Preparation</li>
+                    <li class="text-gray-400">Financial Consulting</li>
+                    <li class="text-gray-400">Payroll Services</li>
+                </ul>
+            </div>
+    
+        </div>
+    
+        <!-- Footer Bottom -->
+        <div class="border-t border-gray-700 mt-8 pt-5 text-center text-sm text-gray-500">
+            © 2025 Pocket Accts. All Rights Reserved.
+        </div>
+    </footer>
+</body>
+
+</html>
